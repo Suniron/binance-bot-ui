@@ -166,6 +166,11 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.0.6.tgz#023d72a5c4531b4ce204528971700a78a85a0c50"
   integrity sha512-Myxw//kzromB9yWgS8qYGuGVf91oBUUJpNvy5eM50sqvmKLbKjwLxohJnkWGTeeI9v9IBMtPLxz5Gc60FIfvCA==
 
+"@stitches/react@^1.0.0-canary.0":
+  version "1.0.0-canary.0"
+  resolved "https://registry.yarnpkg.com/@stitches/react/-/react-1.0.0-canary.0.tgz#55666b4342d1e4cfa4cac1f2cb1a45bfa2ea905d"
+  integrity sha512-9/7J0+2z3FZPLf08ZMwtccnRvcqTDB+Sk4Eb+lKjd1meidN1nUUvyvcduyRfzwmlZZSfNJPcABDL+oGrsAvoUg==
+
 "@types/node@*":
   version "16.4.12"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.4.12.tgz#961e3091f263e6345d2d84afab4e047a60b4b11b"
