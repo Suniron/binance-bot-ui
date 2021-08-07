@@ -5,26 +5,54 @@ import {
   DropdownContent,
   DropdownItem,
 } from "../style/DropdownElements";
+import { FaSortDown } from "react-icons/fa";
+import { useActions, useAppState } from "../../overmind";
 
 const PeriodSelector = () => {
-  const [isHovered, setIsHovered] = useState(true);
+  const [showOptions, setShowOptions] = useState(false);
+  const {
+    pastTrades: { selectedPeriod },
+  } = useAppState();
+  const { changeSelectedPeriod } = useActions();
+
+  /**
+   * Handle the user choice and hide selector options.
+   * @param choice
+   */
+  const handleChoice = (choice: string) => {
+    changeSelectedPeriod(choice);
+    setShowOptions(false);
+  };
 
   return (
     <Dropdown>
       <DropdownButton
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseEnter={() => setShowOptions(true)}
+        onMouseLeave={() => setShowOptions(false)}
       >
-        Choose a period
+        {selectedPeriod} <FaSortDown />
       </DropdownButton>
       <DropdownContent
-        show={isHovered}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        show={showOptions}
+        onMouseEnter={() => setShowOptions(true)}
+        onMouseLeave={() => setShowOptions(false)}
       >
-        <DropdownItem>Period 1</DropdownItem>
-        <DropdownItem>Period 2</DropdownItem>
-        <DropdownItem>Period 3</DropdownItem>
+        <DropdownItem onClick={() => handleChoice("Last hour")}>
+          Last hour
+        </DropdownItem>
+        <DropdownItem onClick={() => handleChoice("Last day")}>
+          Last day
+        </DropdownItem>
+        <DropdownItem onClick={() => handleChoice("Last 3 days")}>
+          Last 3 days
+        </DropdownItem>
+        <DropdownItem onClick={() => handleChoice("Last week")}>
+          Last week
+        </DropdownItem>
+        <DropdownItem onClick={() => handleChoice("Last month")}>
+          Last month
+        </DropdownItem>
+        <DropdownItem onClick={() => handleChoice("All")}>All</DropdownItem>
       </DropdownContent>
     </Dropdown>
   );

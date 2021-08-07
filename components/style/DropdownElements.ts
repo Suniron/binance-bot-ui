@@ -27,7 +27,7 @@ export const DropdownContent = styled("div", {
 
 export const DropdownButton = styled("button", {
   borderRadius: 3,
-  border: "1px solid",
+  border: "1px solid gray",
   backgroundColor: "transparent",
   "&:hover": {
     backgroundColor: "DarkGray",
@@ -37,6 +37,7 @@ export const DropdownButton = styled("button", {
 export const DropdownItem = styled("a", {
   display: "block",
   padding: "1px 5px",
+  cursor: "pointer",
   "&:hover": {
     backgroundColor: "#FCD535",
   },

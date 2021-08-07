@@ -1,4 +1,10 @@
 import { Context } from ".";
+import { SelectedPeriod } from "./state";
+
+// ===============
+// == WEBSOCKET ==
+// ===============
+
 /**
  * Try and set ws to the backend. Return **true** if it works. Otherwise, it will be **false**.
  * @param context
@@ -34,4 +40,15 @@ export const onWsErrorHandler = ({ state }: Context, ev: Event) => {
 
 export const onWsCloseHandler = ({ state }: Context, ev: CloseEvent) => {
   console.log("TODO: Websocket was closed:", ev);
+};
+
+// =================
+// == PAST TRADES ==
+// =================
+
+export const changeSelectedPeriod = (
+  { state }: Context,
+  newPeriod: SelectedPeriod
+) => {
+  state.pastTrades.selectedPeriod = newPeriod;
 };
