@@ -11,6 +11,7 @@ import * as actions from "./actions";
 export const config = {
   state,
   actions,
+  effects: {},
 };
 
 export type Context = IContext<typeof config>;
