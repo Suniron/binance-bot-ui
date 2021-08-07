@@ -36,8 +36,11 @@ export type State = {
     onSelectedPeriod: {
       trades: PastTrade[];
       won: PastTrade[];
+      wonRatio: number;
       lost: PastTrade[];
+      lostRatio: number;
       neutral: PastTrade[];
+      neutralRatio: number;
     };
   };
   common?: Common;
@@ -173,16 +176,40 @@ export const state: State = {
           (pt) => pt.profit > 0
         );
       }),
+      wonRatio: derived((state: State, rootState: Context["state"]) => {
+        if (!rootState.common) return 0;
+        if (rootState.pastTrades.onSelectedPeriod.trades.length === 0) return 0;
+        return (
+          rootState.pastTrades.onSelectedPeriod.won.length /
+          rootState.pastTrades.onSelectedPeriod.trades.length
+        );
+      }),
       lost: derived((state: State, rootState: Context["state"]) => {
         if (!rootState.common) return [];
         return rootState.pastTrades.onSelectedPeriod.trades.filter(
           (pt) => pt.profit < 0
         );
       }),
+      lostRatio: derived((state: State, rootState: Context["state"]) => {
+        if (!rootState.common) return 0;
+        if (rootState.pastTrades.onSelectedPeriod.trades.length === 0) return 0;
+        return (
+          rootState.pastTrades.onSelectedPeriod.lost.length /
+          rootState.pastTrades.onSelectedPeriod.trades.length
+        );
+      }),
       neutral: derived((state: State, rootState: Context["state"]) => {
         if (!rootState.common) return [];
         return rootState.pastTrades.onSelectedPeriod.trades.filter(
           (pt) => pt.profit === 0
+        );
+      }),
+      neutralRatio: derived((state: State, rootState: Context["state"]) => {
+        if (!rootState.common) return 0;
+        if (rootState.pastTrades.onSelectedPeriod.trades.length === 0) return 0;
+        return (
+          rootState.pastTrades.onSelectedPeriod.neutral.length /
+          rootState.pastTrades.onSelectedPeriod.trades.length
         );
       }),
     },
