@@ -7,6 +7,7 @@ import {
 } from "../style/DropdownElements";
 import { FaSortDown } from "react-icons/fa";
 import { useActions, useAppState } from "../../overmind";
+import { SelectedPeriod } from "../../overmind/state";
 
 const PeriodSelector = () => {
   const [showOptions, setShowOptions] = useState(false);
@@ -19,7 +20,7 @@ const PeriodSelector = () => {
    * Handle the user choice and hide selector options.
    * @param choice
    */
-  const handleChoice = (choice: string) => {
+  const handleChoice = (choice: SelectedPeriod) => {
     changeSelectedPeriod(choice);
     setShowOptions(false);
   };
