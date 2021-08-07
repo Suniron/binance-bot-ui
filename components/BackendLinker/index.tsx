@@ -7,11 +7,13 @@ import {
 } from "../../utils/cache.utils";
 import { Ul, Li, LiLink, LiIcon } from "../style/ListElements";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import ConnectionState, { CurrentConnectionState } from "./ConnectionState";
 
 const BackendLinker = () => {
   const [address, setAddress] = useState("");
   const [addressesHistory, setAddressesHistory] = useState<string[]>([]);
-  const [isWsError, setIsWsError] = useState(false);
+  const [connectionState, setConnectionState] =
+    useState<CurrentConnectionState>("empty");
   const { setBackendWebSocketUrl } = useActions();
 
   useEffect(() => {
@@ -27,11 +29,13 @@ const BackendLinker = () => {
       return window.alert("Address typed is not correct ❌");
     }
 
+    setConnectionState("loading");
+
     const ws = new WebSocket("ws://" + address);
 
     // If connection fail:
     ws.onerror = () => {
-      setIsWsError(true);
+      setConnectionState("error");
     };
 
     // If connection works:
@@ -42,10 +46,12 @@ const BackendLinker = () => {
   };
 
   const connectToLastWebsocket = (address: string) => {
+    setConnectionState("loading");
+
     const ws = new WebSocket(address);
     // If connection fail:
     ws.onerror = () => {
-      setIsWsError(true);
+      setConnectionState("error");
     };
     // If connection works:
     ws.onopen = () => {
@@ -73,7 +79,7 @@ const BackendLinker = () => {
         ></input>
         <button onClick={handleButtonClick}>Connection</button>
 
-        {isWsError && <p>Connection failed! Please, verify the address ❌</p>}
+        <ConnectionState currentConnectionState={connectionState} />
         {addressesHistory.length !== 0 ? (
           <>
             <p>Do you want to use a precedent connection?</p>
@@ -92,9 +98,7 @@ const BackendLinker = () => {
               ))}
             </Ul>
           </>
-        ) : (
-          ""
-        )}
+        ) : null}
       </div>
     </>
   );
