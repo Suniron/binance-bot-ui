@@ -8,7 +8,8 @@ export const { css, styled, getCssText } = createStitches({
       binanceRed: "rgb(246, 70, 93)",
       binanceGreen: "rgb(14, 203, 129);",
       binanceYellow: "rgb(252, 234, 156);",
-      binanceLightGrey: "#fafafafa",
+      binanceLightGrey: "rgb(250,250,250)",
+      binanceLightGrey2: "rgb(245,245,245)",
     },
     space: {
       1: "5px",
@@ -38,49 +39,7 @@ export const { css, styled, getCssText } = createStitches({
       system: "system-ui",
     },
   },
-  utils: {
-    // Abbreviated margin properties
-    m:
-      (config: any) =>
-      (value: `$${keyof typeof config["theme"]["space"]}` | (string & {})) => ({
-        marginTop: value,
-        marginBottom: value,
-        marginLeft: value,
-        marginRight: value,
-      }),
-    mt:
-      (config: any) =>
-      (value: `$${keyof typeof config["theme"]["space"]}` | (string & {})) => ({
-        marginTop: value,
-      }),
-    mr:
-      (config: any) =>
-      (value: `$${keyof typeof config["theme"]["space"]}` | (string & {})) => ({
-        marginRight: value,
-      }),
-    mb:
-      (config: any) =>
-      (value: `$${keyof typeof config["theme"]["space"]}` | (string & {})) => ({
-        marginBottom: value,
-      }),
-    ml:
-      (config: any) =>
-      (value: `$${keyof typeof config["theme"]["space"]}` | (string & {})) => ({
-        marginLeft: value,
-      }),
-    mx:
-      (config: any) =>
-      (value: `$${keyof typeof config["theme"]["space"]}` | (string & {})) => ({
-        marginLeft: value,
-        marginRight: value,
-      }),
-    my:
-      (config: any) =>
-      (value: `$${keyof typeof config["theme"]["space"]}` | (string & {})) => ({
-        marginTop: value,
-        marginBottom: value,
-      }),
-  },
+  utils: {},
   media: {
     smartphone: `@media (min-width: 640px)`,
     tablet: `@media (min-width: 768px)`,
