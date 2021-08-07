@@ -41,17 +41,23 @@ const PeriodSelector = () => {
         <DropdownItem onClick={() => handleChoice("Last hour")}>
           Last hour
         </DropdownItem>
+        <DropdownItem onClick={() => handleChoice("Last 6 hours")}>
+          Last 6 hours
+        </DropdownItem>
+        <DropdownItem onClick={() => handleChoice("Last 12 hours")}>
+          Last 12 hours
+        </DropdownItem>
         <DropdownItem onClick={() => handleChoice("Last day")}>
           Last day
         </DropdownItem>
         <DropdownItem onClick={() => handleChoice("Last 3 days")}>
           Last 3 days
         </DropdownItem>
-        <DropdownItem onClick={() => handleChoice("Last week")}>
-          Last week
+        <DropdownItem onClick={() => handleChoice("Last 7 days")}>
+          Last 7 days
         </DropdownItem>
-        <DropdownItem onClick={() => handleChoice("Last month")}>
-          Last month
+        <DropdownItem onClick={() => handleChoice("Last 30 days")}>
+          Last 30 days
         </DropdownItem>
         <DropdownItem onClick={() => handleChoice("All")}>All</DropdownItem>
       </DropdownContent>

@@ -18,7 +18,9 @@ export default function Home() {
     let sendInterval: NodeJS.Timer;
 
     // Attach handlers:
-    ws.onmessage = (ev) => actions.onWsMessageHandler({ ws, ev });
+    ws.onmessage = (ev) => {
+      actions.onWsMessageHandler({ ws, ev });
+    };
 
     ws.onerror = (ev) => actions.onWsErrorHandler(ev);
 

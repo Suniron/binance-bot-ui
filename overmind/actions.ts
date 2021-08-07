@@ -30,8 +30,13 @@ export const onWsMessageHandler = (
   { state }: Context,
   args: { ws: WebSocket; ev: MessageEvent<any> | null }
 ) => {
-  const msgDatas = JSON.parse(args.ev?.data);
-  // TODO: handle datas
+  const datas = JSON.parse(args.ev?.data);
+
+  if (datas.type === "latest") {
+    state.common = datas.common;
+  }
+  // console.log(datas);
+  console.log();
 };
 
 export const onWsErrorHandler = ({ state }: Context, ev: Event) => {
