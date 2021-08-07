@@ -1,6 +1,6 @@
 import React from "react";
 import Div from "../style/Div";
-import { Li, Ul } from "../style/ListElements";
+import { Li, Ul } from "../style/listElements";
 import Disconnector from "./Disconnector";
 
 const Settings = () => {

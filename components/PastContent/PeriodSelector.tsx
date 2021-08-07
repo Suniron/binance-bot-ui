@@ -4,7 +4,7 @@ import {
   DropdownButton,
   DropdownContent,
   DropdownItem,
-} from "../style/DropdownElements";
+} from "../style/dropdownElements";
 import { FaSortDown } from "react-icons/fa";
 import { useActions, useAppState } from "../../overmind";
 import { SelectedPeriod } from "../../overmind/state";

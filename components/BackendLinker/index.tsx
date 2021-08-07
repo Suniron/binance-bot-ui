@@ -5,7 +5,7 @@ import {
   getCachedAddresses,
   removeCachedAddress,
 } from "../../utils/cache.utils";
-import { Ul, Li, LiLink, LiIcon } from "../style/ListElements";
+import { Ul, Li, LiLink, LiIcon } from "../style/listElements";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import ConnectionState, { CurrentConnectionState } from "./ConnectionState";
 
