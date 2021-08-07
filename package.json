@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@stitches/react": "^1.0.0-canary.0",
+    "cross-env": "^7.0.3",
     "next": "11.0.1",
     "overmind": "^28.0.1",
     "overmind-react": "^29.0.1",

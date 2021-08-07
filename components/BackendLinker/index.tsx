@@ -35,14 +35,12 @@ const BackendLinker = () => {
     };
   };
 
-  const useLastConnection = (address: string) => {
+  const connectToLastWebsocket = (address: string) => {
     const ws = new WebSocket(address);
-
     // If connection fail:
     ws.onerror = () => {
       setIsWsError(true);
     };
-
     // If connection works:
     ws.onopen = () => {
       setBackendWebSocketUrl(address);
@@ -75,7 +73,7 @@ const BackendLinker = () => {
                 <li
                   style={{ cursor: "pointer" }}
                   key={"address_" + address}
-                  onClick={() => useLastConnection(address)}
+                  onClick={() => connectToLastWebsocket(address)}
                 >
                   {address.replace("ws://", "")}
                 </li>
