@@ -2,11 +2,22 @@ import { styled } from "../../stitches.config";
 
 export const Ul = styled("ul", {
   listStyle: "none",
+  margin: 0,
   padding: 1,
   width: "fit-content",
   backgroundColor: "white",
   borderRadius: 3,
   border: "1px solid gray",
+  variants: {
+    inline: {
+      true: { display: "inline-flex" },
+    },
+    onlyIcons: {
+      true: {
+        border: "none",
+      },
+    },
+  },
 });
 
 export const Li = styled("li", {

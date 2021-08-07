@@ -13,6 +13,13 @@ export const setIsBackendLinked = ({ state }: Context, isLinked: boolean) => {
   state.backend.isLinked = isLinked;
 };
 
+export const disconnectBackendSocket = ({ state }: Context) => {
+  // reset state
+  state.backend.isLinked = false;
+  state.websocket.isOpen = false;
+  state.websocket.url = undefined;
+};
+
 export const onWsMessageHandler = (
   { state }: Context,
   args: { ws: WebSocket; ev: MessageEvent<any> | null }

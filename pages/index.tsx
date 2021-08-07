@@ -17,10 +17,10 @@ export default function Home() {
     // Attach handlers:
     ws.onmessage = (ev) => actions.onWsMessageHandler({ ws, ev });
     ws.onerror = (ev) => actions.onWsErrorHandler(ev);
-    ws.onclose = (ev) => actions.onWsCloseHandler(ev);
+    ws.onclose = () => actions.disconnectBackendSocket();
 
-    // Enable auto-update, every second:
     ws.onopen = () => {
+      // Enable auto-update, every second:
       setInterval(() => ws.send(JSON.stringify({ command: "latest" })), 1000);
     };
 
