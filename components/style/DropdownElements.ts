@@ -1,4 +1,4 @@
-import { styled } from "@stitches/react";
+import { styled } from "../../stitches.config";
 
 export const Dropdown = styled("div", {
   position: "relative",
@@ -8,7 +8,7 @@ export const Dropdown = styled("div", {
 export const DropdownContent = styled("div", {
   display: "none",
   position: "absolute",
-  backgroundColor: "#fafafa",
+  backgroundColor: "$binanceLightGrey",
   minWidth: "160px",
   boxShadow: "0px 8px 16px 0px rgba(0,0,0,0.2)",
   zIndex: 1,
