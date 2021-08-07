@@ -79,7 +79,7 @@ const BackendLinker = () => {
             <p>Do you want to use a precedent connection?</p>
             <Ul>
               {addressesHistory.map((address) => (
-                <Li type="link" withIcon key={"address_" + address}>
+                <Li withIcon key={"address_" + address}>
                   <LiLink onClick={() => connectToLastWebsocket(address)}>
                     {address.replace("ws://", "")}
                   </LiLink>

@@ -12,21 +12,20 @@ export const Ul = styled("ul", {
 export const Li = styled("li", {
   padding: "1px 2px",
   borderRadius: 3,
+  cursor: "pointer",
   "&:hover": {
     backgroundColor: "$binanceOrange",
   },
   variants: {
-    type: {
-      link: {
-        cursor: "pointer",
-      },
-    },
     withIcon: {
       true: { display: "flex", placeContent: "space-between" },
     },
   },
 });
 
+/**
+ * Link inside an Li element
+ */
 export const LiLink = styled("p", {
   margin: 0,
   width: "100%",
@@ -36,6 +35,9 @@ export const LiLink = styled("p", {
   },
 });
 
+/**
+ * Icon inside an Li element
+ */
 export const LiIcon = styled("div", {
   variants: {
     position: {
