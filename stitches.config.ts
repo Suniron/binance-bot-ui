@@ -8,6 +8,7 @@ export const { css, styled, getCssText } = createStitches({
       binanceRed: "rgb(246, 70, 93)",
       binanceGreen: "rgb(14, 203, 129);",
       binanceYellow: "rgb(252, 234, 156);",
+      binanceLightGrey: "#fafafafa",
     },
     space: {
       1: "5px",
