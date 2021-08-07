@@ -17,3 +17,16 @@ export const addCachedAddress = (address: string) => {
   cachedAddresses.push(address);
   setCachedAddresses(cachedAddresses);
 };
+
+export const removeCachedAddress = (address: string) => {
+  const cachedAddresses = getCachedAddresses();
+  const indexToRemove = cachedAddresses.findIndex((c) => c === address);
+
+  if (!indexToRemove && indexToRemove !== 0) {
+    return;
+  }
+
+  cachedAddresses.splice(indexToRemove, 1);
+
+  setCachedAddresses(cachedAddresses);
+};

@@ -4,7 +4,7 @@ import {
   DropdownButton,
   DropdownContent,
   DropdownItem,
-} from "../DropdownElements";
+} from "../style/DropdownElements";
 
 const PeriodSelector = () => {
   const [isHovered, setIsHovered] = useState(true);

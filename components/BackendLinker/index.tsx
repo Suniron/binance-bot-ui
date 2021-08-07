@@ -1,6 +1,12 @@
 import React, { MouseEvent, useEffect, useState } from "react";
 import { useActions } from "../../overmind";
-import { addCachedAddress, getCachedAddresses } from "../../utils/cache.utils";
+import {
+  addCachedAddress,
+  getCachedAddresses,
+  removeCachedAddress,
+} from "../../utils/cache.utils";
+import { Ul, Li, LiLink, LiIcon } from "../style/ListElements";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const BackendLinker = () => {
   const [address, setAddress] = useState("");
@@ -47,6 +53,11 @@ const BackendLinker = () => {
     };
   };
 
+  const removeLastWebsocket = (address: string) => {
+    removeCachedAddress(address);
+    setAddressesHistory(getCachedAddresses());
+  };
+
   return (
     <>
       <h1>Welcome back! 🖐</h1>
@@ -60,25 +71,26 @@ const BackendLinker = () => {
           placeholder="IP address or URL"
           onChange={(e) => setAddress(e.target.value)}
         ></input>
-        <button type="button" onClick={handleButtonClick}>
-          Connection
-        </button>
+        <button onClick={handleButtonClick}>Connection</button>
 
         {isWsError && <p>Connection failed! Please, verify the address ❌</p>}
         {addressesHistory.length !== 0 ? (
           <>
-            <h5>Last connections:</h5>
-            <ul>
+            <p>Do you want to use a precedent connection?</p>
+            <Ul>
               {addressesHistory.map((address) => (
-                <li
-                  style={{ cursor: "pointer" }}
-                  key={"address_" + address}
-                  onClick={() => connectToLastWebsocket(address)}
-                >
-                  {address.replace("ws://", "")}
-                </li>
+                <Li type="link" withIcon key={"address_" + address}>
+                  <LiLink onClick={() => connectToLastWebsocket(address)}>
+                    {address.replace("ws://", "")}
+                  </LiLink>
+                  <LiIcon hoverColor="red" position="right">
+                    <RiDeleteBin6Line
+                      onClick={() => removeLastWebsocket(address)}
+                    />
+                  </LiIcon>
+                </Li>
               ))}
-            </ul>
+            </Ul>
           </>
         ) : (
           ""
