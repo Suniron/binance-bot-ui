@@ -5,6 +5,7 @@ import CurrentContent from "../components/CurrentContent";
 import Footer from "../components/Footer";
 import PastContent from "../components/PastContent";
 import Settings from "../components/Settings";
+import Div from "../components/style/Div";
 import Layout from "../components/style/Layout";
 import { useActions, useAppState } from "../overmind";
 
@@ -54,15 +55,15 @@ export default function Home() {
 
   return (
     <Layout>
-      <div style={{ display: "inline-flex" }}>
+      <Div flex>
         <AccountBalances />
         <Settings />
-      </div>
+      </Div>
 
-      <div style={{ display: "inline-flex" }}>
+      <Div flex>
         <CurrentContent />
         <PastContent />
-      </div>
+      </Div>
       <Footer />
     </Layout>
   );

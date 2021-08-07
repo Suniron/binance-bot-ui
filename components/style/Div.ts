@@ -13,6 +13,7 @@ const Div = styled("div", {
         padding: 3,
       },
     },
+    flex: { true: { display: "flex", width: "100%", placeContent: "center" } },
   },
 });
 

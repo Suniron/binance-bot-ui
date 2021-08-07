@@ -17,6 +17,9 @@ const PastTrades = () => {
     },
   } = useAppState();
 
+  if (trades.length === 0) {
+    return <Div style="contentBox">No trade on the selected period</Div>;
+  }
   return (
     <Div style="contentBox">
       <CardGroup css={{ maxHeight: "400px" }}>
