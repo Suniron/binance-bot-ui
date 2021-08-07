@@ -14,14 +14,28 @@ export default function Home() {
 
   if (state.websocket.url && !state.backend.isLinked) {
     const ws = new WebSocket(state.websocket.url);
+
+    let sendInterval: NodeJS.Timer;
+
     // Attach handlers:
     ws.onmessage = (ev) => actions.onWsMessageHandler({ ws, ev });
+
     ws.onerror = (ev) => actions.onWsErrorHandler(ev);
-    ws.onclose = () => actions.disconnectBackendSocket();
+
+    ws.onclose = () => {
+      actions.disconnectBackendSocket();
+      // Close interval if needed:
+      if (sendInterval) {
+        clearInterval(sendInterval);
+      }
+    };
 
     ws.onopen = () => {
       // Enable auto-update, every second:
-      setInterval(() => ws.send(JSON.stringify({ command: "latest" })), 1000);
+      sendInterval = setInterval(
+        () => ws.send(JSON.stringify({ command: "latest" })),
+        1000
+      );
     };
 
     actions.setIsBackendLinked(true);
