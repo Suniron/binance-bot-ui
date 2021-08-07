@@ -1,5 +1,4 @@
 import { Context } from ".";
-
 /**
  * Try and set ws to the backend. Return **true** if it works. Otherwise, it will be **false**.
  * @param context
