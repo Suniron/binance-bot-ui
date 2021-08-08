@@ -1,6 +1,6 @@
 import React from "react";
 import Div from "../style/Div";
-import PastTrades from "./Past Trades";
+import PastTrades from "./PastTrades";
 import PastTradesInfos from "./PastTradesInfos";
 import PeriodSelector from "./PeriodSelector";
 
