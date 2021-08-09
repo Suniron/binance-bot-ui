@@ -281,7 +281,7 @@ export const state: State = {
         winList.sort((a, b) => {
           return b.winCount - a.winCount;
         });
-        console.log(JSON.stringify(winList));
+
         return winList;
       }),
       sortedByLose: derived((state: State, rootState: Context["state"]) =>
