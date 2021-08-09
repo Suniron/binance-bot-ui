@@ -9,7 +9,7 @@ export const THead = styled("thead", {
 
 export const Th = styled("th", {
   padding: "0px",
-  borderBottom: "2px solid lightgrey",
+  borderBottom: "1px solid lightgrey",
 });
 
 export const TBody = styled("tbody", {});

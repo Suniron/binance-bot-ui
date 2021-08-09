@@ -1,7 +1,7 @@
 import React from "react";
 import { useAppState } from "../../overmind";
 import Div from "../style/Div";
-import { Table, TBody, Td, THead, Tr } from "../style/tableElements";
+import { Table, TBody, Td, Th, THead, Tr } from "../style/tableElements";
 
 const PastTradesInfos = () => {
   const {
@@ -12,9 +12,11 @@ const PastTradesInfos = () => {
     <Div style="contentBox">
       <Table>
         <THead>
-          <th></th>
-          <th>Value</th>
-          <th>%</th>
+          <Tr>
+            <Th></Th>
+            <Th>Value</Th>
+            <Th>%</Th>
+          </Tr>
         </THead>
         <TBody>
           <Tr color="green">

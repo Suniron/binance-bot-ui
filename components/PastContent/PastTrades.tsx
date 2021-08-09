@@ -22,7 +22,7 @@ const PastTrades = () => {
   }
   return (
     <Div style="contentBox">
-      <CardGroup css={{ maxHeight: "400px" }}>
+      <CardGroup css={{ maxHeight: "200px", maxWidth: "420px" }}>
         {trades.map((trade) => (
           <Card
             key={`card_${trade.date}${trade.symbol}`}

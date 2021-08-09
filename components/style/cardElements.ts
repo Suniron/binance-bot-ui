@@ -1,6 +1,13 @@
 import { styled } from "../../stitches.config";
 
-export const CardGroup = styled("div", { overflow: "auto" });
+export const CardGroup = styled("div", {
+  display: "inline-flex",
+  flexDirection: "column",
+  placeContent: "flexStart",
+  justifyContent: "center",
+  flexFlow: "wrap",
+  overflow: "auto",
+});
 
 export const Card = styled("div", {
   borderRadius: "3px",
