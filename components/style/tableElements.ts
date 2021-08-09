@@ -1,6 +1,9 @@
 import { styled } from "../../stitches.config";
 
-export const Table = styled("table", { borderSpacing: 0 });
+export const Table = styled("table", {
+  borderSpacing: 0,
+  width: "fit-content",
+});
 
 export const THead = styled("thead", {
   borderSpacing: 0,
