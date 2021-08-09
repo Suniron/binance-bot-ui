@@ -44,9 +44,9 @@ export type State = {
     };
     bySymbol: {
       all: SymbolWinLose[];
-      sortedByWin: SymbolWinLose[];
-      sortedByLose: SymbolWinLose[];
-      sortedByNeutral: SymbolWinLose[];
+      // sortedByWin: SymbolWinLose[];
+      // sortedByLose: SymbolWinLose[];
+      // sortedByNeutral: SymbolWinLose[];
     };
   };
   common?: Common;
@@ -275,25 +275,25 @@ export const state: State = {
 
         return symbols;
       }),
-      sortedByWin: derived((state: State, rootState: Context["state"]) => {
-        const winList = rootState.pastTrades.bySymbol.all;
+      // sortedByWin: derived((state: State, rootState: Context["state"]) => {
+      //   const winList = rootState.pastTrades.bySymbol.all;
 
-        winList.sort((a, b) => {
-          return b.winCount - a.winCount;
-        });
+      //   winList.sort((a, b) => {
+      //     return b.winCount - a.winCount;
+      //   });
 
-        return winList;
-      }),
-      sortedByLose: derived((state: State, rootState: Context["state"]) =>
-        rootState.pastTrades.bySymbol.all.sort(
-          (a, b) => b.loseCount - a.loseCount
-        )
-      ),
-      sortedByNeutral: derived((state: State, rootState: Context["state"]) =>
-        rootState.pastTrades.bySymbol.all.sort(
-          (a, b) => b.neutralCount - a.neutralCount
-        )
-      ),
+      //   return winList;
+      // }),
+      // sortedByLose: derived((state: State, rootState: Context["state"]) =>
+      //   rootState.pastTrades.bySymbol.all.sort(
+      //     (a, b) => b.loseCount - a.loseCount
+      //   )
+      // ),
+      // sortedByNeutral: derived((state: State, rootState: Context["state"]) =>
+      //   rootState.pastTrades.bySymbol.all.sort(
+      //     (a, b) => b.neutralCount - a.neutralCount
+      //   )
+      // ),
     },
   },
 };
