@@ -5,7 +5,8 @@ const Div = styled("div", {
     style: {
       contentBox: {
         display: "flex",
-        placeContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
         boxShadow: "0px 0px 20px rgb(0 0 0 / 20%);",
         borderRadius: 3,
         backgroundColor: "White",
