@@ -9,7 +9,7 @@ export default function PastContent() {
     <div>
       <PeriodSelector />
       <PastTradesInfos />
-      <Div style="contentBox">Past Trades Charts</Div>
+      {/* <Div style="contentBox">Past Trades Charts</Div> */}
       <PastTrades />
     </div>
   );
