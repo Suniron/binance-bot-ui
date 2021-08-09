@@ -42,10 +42,22 @@ export type State = {
       neutral: PastTrade[];
       neutralRatio: number;
     };
+    bySymbol: {
+      all: SymbolWinLose[];
+      sortedByWin: SymbolWinLose[];
+      sortedByLose: SymbolWinLose[];
+      sortedByNeutral: SymbolWinLose[];
+    };
   };
   common?: Common;
 };
 
+type SymbolWinLose = {
+  name: string;
+  winCount: number;
+  loseCount: number;
+  neutralCount: number;
+};
 export const state: State = {
   backend: {
     isLinked: false,
@@ -212,6 +224,76 @@ export const state: State = {
           rootState.pastTrades.onSelectedPeriod.trades.length
         );
       }),
+    },
+    bySymbol: {
+      all: derived((state: State, rootState: Context["state"]) => {
+        const symbols: SymbolWinLose[] = [];
+
+        rootState.pastTrades.onSelectedPeriod.trades.forEach((trade) => {
+          const symbolIndex = symbols.findIndex((s) => s.name === trade.symbol);
+
+          // If symbol is not in list:
+          if (symbolIndex === -1) {
+            const symbolToAdd: SymbolWinLose = {
+              name: trade.symbol,
+              winCount: 0,
+              loseCount: 0,
+              neutralCount: 0,
+            };
+
+            switch (true) {
+              case trade.percent > 0:
+                symbolToAdd.winCount++;
+                break;
+              case trade.percent < 0:
+                symbolToAdd.loseCount++;
+                break;
+              case trade.percent === 0:
+                symbolToAdd.neutralCount++;
+                break;
+              default:
+                break;
+            }
+
+            symbols.push(symbolToAdd);
+          } else {
+            switch (true) {
+              case trade.percent > 0:
+                symbols[symbolIndex].winCount++;
+                break;
+              case trade.percent < 0:
+                symbols[symbolIndex].loseCount++;
+                break;
+              case trade.percent === 0:
+                symbols[symbolIndex].neutralCount++;
+                break;
+              default:
+                break;
+            }
+          }
+        });
+
+        return symbols;
+      }),
+      sortedByWin: derived((state: State, rootState: Context["state"]) => {
+        const winList = rootState.pastTrades.bySymbol.all;
+
+        winList.sort((a, b) => {
+          return b.winCount - a.winCount;
+        });
+        console.log(JSON.stringify(winList));
+        return winList;
+      }),
+      sortedByLose: derived((state: State, rootState: Context["state"]) =>
+        rootState.pastTrades.bySymbol.all.sort(
+          (a, b) => b.loseCount - a.loseCount
+        )
+      ),
+      sortedByNeutral: derived((state: State, rootState: Context["state"]) =>
+        rootState.pastTrades.bySymbol.all.sort(
+          (a, b) => b.neutralCount - a.neutralCount
+        )
+      ),
     },
   },
 };
