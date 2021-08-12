@@ -31,7 +31,7 @@ const PastTradesInfos = () => {
           </Tr>
           <Tr>
             <Td>Neutral</Td>
-            <Td>{onSelectedPeriod.neutral.length * 100}</Td>
+            <Td>{onSelectedPeriod.neutral.length}</Td>
             <Td>{(onSelectedPeriod.neutralRatio * 100).toFixed(1)}</Td>
           </Tr>
           <Tr bold>
